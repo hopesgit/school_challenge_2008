@@ -47,28 +47,42 @@ class SchoolTest < Minitest::Test
     assert_equal '12:00', school2.end_time
   end
 
+  # Iteration 3 Tests:
   def test_it_is_full_time
-    school = School.new('9:00', 7)
+    school1 = School.new('9:00', 7)
+    school2 = School.new("9:00", 4)
 
-    assert_equal true, school.is_full_time?
+    assert_equal true, school1.is_full_time?
+    assert_equal false, school2.is_full_time?
   end
 
   def test_it_can_capitalize_student_names
-    school = School.new('9:00', 7)
-    school.add_student_name('Aurora')
-    school.add_student_name('tim')
-    school.add_student_name('megan')
-    originals = ["Aurora", "tim", "megan"]
-    capitalized = ["Aurora", "Tim", "Megan"]
+    school1 = School.new('9:00', 7)
+    school1.add_student_name('Aurora')
+    school1.add_student_name('tim')
+    school1.add_student_name('megan')
 
-    assert_equal originals, school.student_names
+    assert_equal ["Aurora", "tim", "megan"], school1.student_names
 
-    assert_equal capitalized, school.standard_student_names
+    assert_equal ["Aurora", "Tim", "Megan"], school1.standard_student_names
+
+    assert_equal ["Aurora", "tim", "megan"], school1.student_names
+
+    school1.add_student_name("MELODY")
+
+    assert_equal ["Aurora", "tim", "megan", "MELODY"], school1.student_names
+
+    assert_equal ["Aurora", "Tim", "Megan", "Melody"], school1.standard_student_names
   end
 
+# Iteration 4 Tests:
   def test_it_can_convert_to_clock_time
-    school = School.new('9:00', 7)
+    school1 = School.new('9:00', 7)
+    school2 = School.new("7:00", 4)
+    school3 = School.new("14:00", 10)
 
-    assert_equal "4:00", school.convert_end_time_to_clock_time
+    assert_equal "4:00", school1.convert_end_time_to_clock_time
+    assert_equal "11:00", school2.convert_end_time_to_clock_time
+    assert_equal "12:00", school3.convert_end_time_to_clock_time
   end
 end

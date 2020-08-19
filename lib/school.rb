@@ -21,7 +21,7 @@ class School
 
   def standard_student_names
     @student_names.map do |name|
-      name.capitalize
+      name.downcase.capitalize
     end
   end
 
@@ -30,7 +30,7 @@ class School
     if schools_out > 12
       (schools_out - 12).to_s + ":00"
     else
-      schools_out + ":00"
+      schools_out.to_s + ":00"
     end
   end
 end
