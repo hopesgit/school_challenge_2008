@@ -50,6 +50,19 @@ class SchoolTest < Minitest::Test
   def test_it_is_full_time
     school = School.new('9:00', 7)
 
-    assert_equal true, school.full_time?
+    assert_equal true, school.is_full_time?
+  end
+
+  def test_it_can_capitalize_student_names
+    school = School.new('9:00', 7)
+    school.add_student_name('Aurora')
+    school.add_student_name('tim')
+    school.add_student_name('megan')
+    originals = ["Aurora", "tim", "megan"]
+    updated = ["Aurora", "Tim", "Megan"]
+
+    assert_equal originals, school.student_names
+
+    assert_equal updated, school.standard_student_names
   end
 end
