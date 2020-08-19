@@ -24,4 +24,13 @@ class School
       name.capitalize
     end
   end
+
+  def convert_end_time_to_clock_time
+    schools_out = end_time.to_i
+    if schools_out > 12
+      (schools_out - 12).to_s + ":00"
+    else
+      schools_out + ":00"
+    end
+  end
 end

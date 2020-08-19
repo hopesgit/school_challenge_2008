@@ -59,10 +59,16 @@ class SchoolTest < Minitest::Test
     school.add_student_name('tim')
     school.add_student_name('megan')
     originals = ["Aurora", "tim", "megan"]
-    updated = ["Aurora", "Tim", "Megan"]
+    capitalized = ["Aurora", "Tim", "Megan"]
 
     assert_equal originals, school.student_names
 
-    assert_equal updated, school.standard_student_names
+    assert_equal capitalized, school.standard_student_names
+  end
+
+  def test_it_can_convert_to_clock_time
+    school = School.new('9:00', 7)
+
+    assert_equal "4:00", school.convert_end_time_to_clock_time
   end
 end
